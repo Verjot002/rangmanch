@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/images/rangmanch_stage_hero.png
     - assets/images/acting_mentorship_concept.png
+    - assets/images/WhatsApp Image 2026-07-10 at 4.17.52 PM.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -13,11 +13,11 @@ class PaymentDialog extends StatefulWidget {
 
   const PaymentDialog({
     super.key,
-    this.upiId = "sonamyadav@upi", // PLACEHOLDER: Replace with actual UPI ID (e.g. yadavsonam@okaxis)
+    this.upiId = "gy6161375-1@okhdfcbank",
     this.merchantName = "The Rangmanch",
     this.amount = 99.00,
     this.transactionNote = "Beginner Acting Workshop Registration",
-    this.whatsappNumber = "919999999999", // PLACEHOLDER: Replace with actual WhatsApp Number
+    this.whatsappNumber = "917986971024",
   });
 
   @override

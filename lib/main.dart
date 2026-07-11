@@ -43,7 +43,6 @@ class _MainScreenState extends State<MainScreen> {
   final GlobalKey _programsKey = GlobalKey();
   final GlobalKey _roadmapKey = GlobalKey();
   final GlobalKey _impactKey = GlobalKey();
-  final GlobalKey _galleryKey = GlobalKey();
   final GlobalKey _faqKey = GlobalKey();
   final GlobalKey _contactKey = GlobalKey();
 
@@ -137,7 +136,6 @@ class _MainScreenState extends State<MainScreen> {
                 _buildRoadmapSection(isMobile),
                 _buildAuditionAndImpactSection(isMobile),
                 _buildWhyChooseSection(isMobile),
-                _buildGallerySection(isMobile),
                 _buildTestimonialsSection(isMobile),
                 _buildFaqSection(isMobile),
                 _buildFooterSection(isMobile),
@@ -450,16 +448,18 @@ class _MainScreenState extends State<MainScreen> {
                     const SizedBox(height: 40),
 
                     // Call to Action Buttons
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Wrap(
+                      spacing: 16,
+                      runSpacing: 12,
+                      alignment: WrapAlignment.center,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         ElevatedButton(
                           onPressed: () => _scrollTo(_programsKey),
                           child: const Text("Explore Programs"),
                         ),
-                        const SizedBox(width: 16),
                         OutlinedButton.icon(
-                          onPressed: () => _launchURL("https://www.imdb.com"),
+                          onPressed: () => _launchURL("https://www.imdb.com/name/nm16038792/"),
                           icon: const FaIcon(FontAwesomeIcons.imdb, color: AppColors.secondary),
                           label: const Text("IMDb Profile"),
                         ),
@@ -526,7 +526,7 @@ class _MainScreenState extends State<MainScreen> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
                                   image: const DecorationImage(
-                                    image: AssetImage("assets/images/acting_mentorship_concept.png"),
+                                    image: AssetImage("assets/images/WhatsApp Image 2026-07-10 at 4.17.52 PM.jpeg"),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -594,7 +594,7 @@ class _MainScreenState extends State<MainScreen> {
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(color: AppColors.primary, width: 2),
                                     image: const DecorationImage(
-                                      image: AssetImage("assets/images/acting_mentorship_concept.png"),
+                                      image: AssetImage("assets/images/WhatsApp Image 2026-07-10 at 4.17.52 PM.jpeg"),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -655,13 +655,27 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                         const SizedBox(height: 32),
                         
-                        OutlinedButton.icon(
-                          onPressed: () => _launchURL("https://www.imdb.com"),
-                          icon: const FaIcon(FontAwesomeIcons.imdb, color: AppColors.secondary),
-                          label: const Text("Verify on IMDb Profile"),
-                          style: OutlinedButton.styleFrom(
-                            side: const BorderSide(color: AppColors.secondary),
-                          ),
+                        Wrap(
+                          spacing: 12,
+                          runSpacing: 12,
+                          children: [
+                            OutlinedButton.icon(
+                              onPressed: () => _launchURL("https://www.imdb.com/name/nm16038792/"),
+                              icon: const FaIcon(FontAwesomeIcons.imdb, color: AppColors.secondary),
+                              label: const Text("Verify on IMDb Profile"),
+                              style: OutlinedButton.styleFrom(
+                                side: const BorderSide(color: AppColors.secondary),
+                              ),
+                            ),
+                            OutlinedButton.icon(
+                              onPressed: () => _launchURL("https://www.instagram.com/__yadav_sonam_?igsh=MW80b2kwczBtb3RqNw%3D%3D&utm_source=qr"),
+                              icon: const FaIcon(FontAwesomeIcons.instagram, color: Colors.pinkAccent),
+                              label: const Text("Follow Sonam on Instagram"),
+                              style: OutlinedButton.styleFrom(
+                                side: const BorderSide(color: Colors.pinkAccent),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -683,11 +697,12 @@ class _MainScreenState extends State<MainScreen> {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.white.withOpacity(0.08)),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: 10,
+        runSpacing: 4,
         children: [
           Icon(icon, color: AppColors.primary, size: 18),
-          const SizedBox(width: 10),
           Text(
             text,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -867,7 +882,7 @@ class _MainScreenState extends State<MainScreen> {
                           ],
                           isPopular: false,
                           buttonText: "Inquire on WhatsApp",
-                          onPressed: () => _launchURL("https://wa.me/919999999999?text=Hi%20Sonam,%20I%20want%20to%20know%20more%20details%20about%20the%20Advanced%20Acting%20Program!"),
+                          onPressed: () => _launchURL("https://wa.me/917986971024?text=Hi%20Sonam,%20I%20want%20to%20know%20more%20details%20about%20the%20Advanced%20Acting%20Program!"),
                         ),
                       ],
                     )
@@ -911,7 +926,7 @@ class _MainScreenState extends State<MainScreen> {
                             ],
                             isPopular: false,
                             buttonText: "Inquire on WhatsApp",
-                            onPressed: () => _launchURL("https://wa.me/919999999999?text=Hi%20Sonam,%20I%20want%20to%20know%20more%20details%20about%20the%20Advanced%20Acting%20Program!"),
+                            onPressed: () => _launchURL("https://wa.me/917986971024?text=Hi%20Sonam,%20I%20want%20to%20know%20more%20details%20about%20the%20Advanced%20Acting%20Program!"),
                           ),
                         ),
                       ],
@@ -964,9 +979,10 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
           const SizedBox(height: 8),
-          Row(
-            textBaseline: TextBaseline.alphabetic,
-            crossAxisAlignment: CrossAxisAlignment.baseline,
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.end,
+            spacing: 8,
+            runSpacing: 4,
             children: [
               Text(
                 price,
@@ -976,11 +992,13 @@ class _MainScreenState extends State<MainScreen> {
                   color: AppColors.secondary,
                 ),
               ),
-              const SizedBox(width: 8),
-              Text(
-                "/ $duration",
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textMuted,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Text(
+                  "/ $duration",
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppColors.textMuted,
+                  ),
                 ),
               ),
             ],
@@ -1316,161 +1334,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  // --- Gallery Section ---
-  Widget _buildGallerySection(bool isMobile) {
-    return Container(
-      key: _galleryKey,
-      color: AppColors.surface,
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 24),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1100),
-          child: Column(
-            children: [
-              _buildSectionHeader("THE RANGMANCH GALLERY", "MOMENTS FROM WORKSHOPS, STAGE & SETS"),
-              const SizedBox(height: 48),
-              
-              // We'll create a stylized artistic visual layout representing a gallery
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 4,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: isMobile ? 1 : 2,
-                  crossAxisSpacing: 24,
-                  mainAxisSpacing: 24,
-                  childAspectRatio: 1.5,
-                ),
-                itemBuilder: (context, index) {
-                  final titles = [
-                    "Live Acting Workshops",
-                    "Theatre Stage Performances",
-                    "Student Acting Practice",
-                    "Behind-The-Scenes Castings",
-                  ];
-                  final sub = [
-                    "Interactive online training modules",
-                    "Refining expression, posture & speech",
-                    "Monologue exercises & feedback loop",
-                    "Real project coordinators working",
-                  ];
 
-                  return HoverCard(
-                    padding: EdgeInsets.zero,
-                    child: Stack(
-                      children: [
-                        // Beautiful gradient overlay in place of standard placeholders
-                        Positioned.fill(
-                          child: Image.asset(
-                            "assets/images/acting_mentorship_concept.png",
-                            fit: BoxFit.cover,
-                            color: Colors.black.withOpacity(0.35 + (index * 0.1)),
-                            colorBlendMode: BlendMode.srcOver,
-                          ),
-                        ),
-                        Positioned.fill(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.transparent,
-                                  Colors.black.withOpacity(0.85),
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 24,
-                          left: 24,
-                          right: 24,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                titles[index],
-                                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                sub[index],
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                  color: AppColors.secondary,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          top: 16,
-                          right: 16,
-                          child: Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.6),
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(Icons.zoom_in, color: Colors.white, size: 18),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-              
-              const SizedBox(height: 40),
-              
-              // YouTube and Social video nudge
-              HoverCard(
-                glowColor: Colors.red.withOpacity(0.3),
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.red.withOpacity(0.1),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const FaIcon(FontAwesomeIcons.youtube, color: Colors.red, size: 28),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Watch Free Acting Guides on YouTube",
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 4),
-                          const Text(
-                            "We regular upload videos on Acting tips, Audition practices, Casting updates, and Self-taping walkthroughs.",
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    ElevatedButton(
-                      onPressed: () => _launchURL("https://www.youtube.com"),
-                      style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                      child: const Text("Subscribe"),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
   // --- Student Testimonials Section ---
   Widget _buildTestimonialsSection(bool isMobile) {
@@ -1614,20 +1478,20 @@ class _MainScreenState extends State<MainScreen> {
               isMobile
                   ? Column(
                       children: [
-                        _buildContactCard(const Icon(Icons.email, color: AppColors.primary, size: 24), "Email Us", "info@therangmanch.com", "mailto:info@therangmanch.com"),
+                        _buildContactCard(const Icon(Icons.email, color: AppColors.primary, size: 24), "Email Us", "therangmanch47@gmail.com", "mailto:therangmanch47@gmail.com"),
                         const SizedBox(height: 16),
-                        _buildContactCard(const FaIcon(FontAwesomeIcons.whatsapp, color: AppColors.primary, size: 24), "WhatsApp Community", "+91 99999 99999", "https://wa.me/919999999999"),
+                        _buildContactCard(const FaIcon(FontAwesomeIcons.whatsapp, color: AppColors.primary, size: 24), "WhatsApp Community", "+91 79869 71024", "https://wa.me/917986971024"),
                         const SizedBox(height: 16),
-                        _buildContactCard(const FaIcon(FontAwesomeIcons.instagram, color: AppColors.primary, size: 24), "Instagram Direct", "@therangmanch_official", "https://www.instagram.com/therangmanch_official"),
+                        _buildContactCard(const FaIcon(FontAwesomeIcons.instagram, color: AppColors.primary, size: 24), "Instagram Direct", "@the__rangmanch_", "https://www.instagram.com/the__rangmanch_?igsh=aWM5cWR3cDk2ZGti"),
                       ],
                     )
                   : Row(
                       children: [
-                        Expanded(child: _buildContactCard(const Icon(Icons.email, color: AppColors.primary, size: 24), "Email Us", "info@therangmanch.com", "mailto:info@therangmanch.com")),
+                        Expanded(child: _buildContactCard(const Icon(Icons.email, color: AppColors.primary, size: 24), "Email Us", "therangmanch47@gmail.com", "mailto:therangmanch47@gmail.com")),
                         const SizedBox(width: 20),
-                        Expanded(child: _buildContactCard(const FaIcon(FontAwesomeIcons.whatsapp, color: AppColors.primary, size: 24), "WhatsApp Community", "+91 99999 99999", "https://wa.me/919999999999")),
+                        Expanded(child: _buildContactCard(const FaIcon(FontAwesomeIcons.whatsapp, color: AppColors.primary, size: 24), "WhatsApp Community", "+91 79869 71024", "https://wa.me/917986971024")),
                         const SizedBox(width: 20),
-                        Expanded(child: _buildContactCard(const FaIcon(FontAwesomeIcons.instagram, color: AppColors.primary, size: 24), "Instagram Direct", "@therangmanch_official", "https://www.instagram.com/therangmanch_official")),
+                        Expanded(child: _buildContactCard(const FaIcon(FontAwesomeIcons.instagram, color: AppColors.primary, size: 24), "Instagram Direct", "@the__rangmanch_", "https://www.instagram.com/the__rangmanch_?igsh=aWM5cWR3cDk2ZGti")),
                       ],
                     ),
               
@@ -1687,13 +1551,36 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        Row(
-                          mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.end,
+                        Wrap(
+                          alignment: isMobile ? WrapAlignment.start : WrapAlignment.end,
+                          spacing: 12,
+                          runSpacing: 12,
                           children: [
-                            _buildSocialIconButton(const FaIcon(FontAwesomeIcons.whatsapp, color: Colors.white, size: 18), "https://wa.me/919999999999"),
-                            _buildSocialIconButton(const FaIcon(FontAwesomeIcons.instagram, color: Colors.white, size: 18), "https://www.instagram.com/therangmanch_official"),
-                            _buildSocialIconButton(const FaIcon(FontAwesomeIcons.youtube, color: Colors.white, size: 18), "https://www.youtube.com"),
-                            _buildSocialIconButton(const FaIcon(FontAwesomeIcons.imdb, color: Colors.white, size: 18), "https://www.imdb.com"),
+                            _buildSocialIconButton(
+                              const FaIcon(FontAwesomeIcons.whatsapp, color: Colors.white, size: 18),
+                              "https://wa.me/917986971024",
+                              tooltip: "WhatsApp Community",
+                            ),
+                            _buildSocialIconButton(
+                              const FaIcon(FontAwesomeIcons.instagram, color: Colors.white, size: 18),
+                              "https://www.instagram.com/the__rangmanch_?igsh=aWM5cWR3cDk2ZGti",
+                              tooltip: "The Rangmanch Instagram",
+                            ),
+                            _buildSocialIconButton(
+                              const FaIcon(FontAwesomeIcons.instagram, color: AppColors.secondary, size: 18),
+                              "https://www.instagram.com/__yadav_sonam_?igsh=MW80b2kwczBtb3RqNw%3D%3D&utm_source=qr",
+                              tooltip: "Sonam Yadav Instagram",
+                            ),
+                            _buildSocialIconButton(
+                              const FaIcon(FontAwesomeIcons.youtube, color: Colors.white, size: 18),
+                              "https://www.youtube.com/@sonam_yadav_47",
+                              tooltip: "YouTube Channel",
+                            ),
+                            _buildSocialIconButton(
+                              const FaIcon(FontAwesomeIcons.imdb, color: Colors.white, size: 18),
+                              "https://www.imdb.com/name/nm16038792/",
+                              tooltip: "IMDb Profile",
+                            ),
                           ],
                         ),
                       ],
@@ -1750,23 +1637,24 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget _buildSocialIconButton(Widget icon, String url) {
-    return Container(
-      margin: const EdgeInsets.only(left: 12),
-      child: InkWell(
-        onTap: () => _launchURL(url),
-        borderRadius: BorderRadius.circular(30),
-        child: Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.05),
-            shape: BoxShape.circle,
-            border: Border.all(color: Colors.white.withOpacity(0.08)),
-          ),
-          child: icon,
+  Widget _buildSocialIconButton(Widget icon, String url, {String? tooltip}) {
+    Widget button = InkWell(
+      onTap: () => _launchURL(url),
+      borderRadius: BorderRadius.circular(30),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.05),
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.white.withOpacity(0.08)),
         ),
+        child: icon,
       ),
     );
+    if (tooltip != null) {
+      return Tooltip(message: tooltip, child: button);
+    }
+    return button;
   }
 
   // --- Section Header Helper ---
