@@ -102,10 +102,13 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
-  void _showPaymentDialog() {
+  void _showPaymentDialog({double amount = 99.00, String note = "Beginner Acting Workshop Registration"}) {
     showDialog(
       context: context,
-      builder: (context) => const PaymentDialog(),
+      builder: (context) => PaymentDialog(
+        amount: amount,
+        transactionNote: note,
+      ),
     );
   }
 
@@ -528,6 +531,7 @@ class _MainScreenState extends State<MainScreen> {
                                   image: const DecorationImage(
                                     image: AssetImage("assets/images/WhatsApp Image 2026-07-10 at 4.17.52 PM.jpeg"),
                                     fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
                                   ),
                                 ),
                               ),
@@ -596,6 +600,7 @@ class _MainScreenState extends State<MainScreen> {
                                     image: const DecorationImage(
                                       image: AssetImage("assets/images/WhatsApp Image 2026-07-10 at 4.17.52 PM.jpeg"),
                                       fit: BoxFit.cover,
+                                      alignment: Alignment.topCenter,
                                     ),
                                   ),
                                 ),
@@ -861,14 +866,14 @@ class _MainScreenState extends State<MainScreen> {
                             "Camera Confidence Exercises",
                             "Live Interactive Q&A Session",
                           ],
-                          isPopular: true,
+                          isPopular: false,
                           buttonText: "Register for ₹99",
-                          onPressed: _showPaymentDialog,
+                          onPressed: () => _showPaymentDialog(amount: 99.00, note: "Beginner Acting Workshop Registration"),
                         ),
                         const SizedBox(height: 32),
                         _buildProgramCard(
                           title: "Advanced Acting Program",
-                          price: "Custom Intake",
+                          price: "₹399",
                           duration: "In-Depth Mentorship",
                           features: [
                             "Comprehensive Theatre Training",
@@ -880,9 +885,26 @@ class _MainScreenState extends State<MainScreen> {
                             "Private WhatsApp Community Access",
                             "Lifetime Career Guidance Support",
                           ],
+                          isPopular: true,
+                          buttonText: "Register for ₹399",
+                          onPressed: () => _showPaymentDialog(amount: 399.00, note: "Advanced Acting Program Registration"),
+                        ),
+                        const SizedBox(height: 32),
+                        _buildProgramCard(
+                          title: "The Rangmanch Premium",
+                          price: "₹149",
+                          duration: "Lifetime Access",
+                          features: [
+                            "Daily Genuine Casting Updates",
+                            "Verified Audition Opportunities",
+                            "TV, OTT, Films & Ads Requirements",
+                            "Modeling, Music Videos & Kids Casting",
+                            "One Place for All Daily Updates",
+                            "Lifetime Access – No Monthly Renewal",
+                          ],
                           isPopular: false,
-                          buttonText: "Inquire on WhatsApp",
-                          onPressed: () => _launchURL("https://wa.me/917986971024?text=Hi%20Sonam,%20I%20want%20to%20know%20more%20details%20about%20the%20Advanced%20Acting%20Program!"),
+                          buttonText: "Join for ₹149",
+                          onPressed: () => _showPaymentDialog(amount: 149.00, note: "The Rangmanch Premium Lifetime Access"),
                         ),
                       ],
                     )
@@ -903,16 +925,16 @@ class _MainScreenState extends State<MainScreen> {
                               "Camera Confidence Exercises",
                               "Live Interactive Q&A Session",
                             ],
-                            isPopular: true,
+                            isPopular: false,
                             buttonText: "Register for ₹99",
-                            onPressed: _showPaymentDialog,
+                            onPressed: () => _showPaymentDialog(amount: 99.00, note: "Beginner Acting Workshop Registration"),
                           ),
                         ),
-                        const SizedBox(width: 32),
+                        const SizedBox(width: 24),
                         Expanded(
                           child: _buildProgramCard(
                             title: "Advanced Acting Program",
-                            price: "Custom Intake",
+                            price: "₹399",
                             duration: "In-Depth Mentorship",
                             features: [
                               "Comprehensive Theatre Training",
@@ -924,9 +946,28 @@ class _MainScreenState extends State<MainScreen> {
                               "Private WhatsApp Community Access",
                               "Lifetime Career Guidance Support",
                             ],
+                            isPopular: true,
+                            buttonText: "Register for ₹399",
+                            onPressed: () => _showPaymentDialog(amount: 399.00, note: "Advanced Acting Program Registration"),
+                          ),
+                        ),
+                        const SizedBox(width: 24),
+                        Expanded(
+                          child: _buildProgramCard(
+                            title: "The Rangmanch Premium",
+                            price: "₹149",
+                            duration: "Lifetime Access",
+                            features: [
+                              "Daily Genuine Casting Updates",
+                              "Verified Audition Opportunities",
+                              "TV, OTT, Films & Ads Requirements",
+                              "Modeling, Music Videos & Kids Casting",
+                              "One Place for All Daily Updates",
+                              "Lifetime Access – No Monthly Renewal",
+                            ],
                             isPopular: false,
-                            buttonText: "Inquire on WhatsApp",
-                            onPressed: () => _launchURL("https://wa.me/917986971024?text=Hi%20Sonam,%20I%20want%20to%20know%20more%20details%20about%20the%20Advanced%20Acting%20Program!"),
+                            buttonText: "Join for ₹149",
+                            onPressed: () => _showPaymentDialog(amount: 149.00, note: "The Rangmanch Premium Lifetime Access"),
                           ),
                         ),
                       ],
