@@ -40,18 +40,25 @@ class _PaymentDialogState extends State<PaymentDialog> {
 
   Future<void> _launchUpi() async {
     final uri = Uri.parse(_upiUrl);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } else {
-      // Fallback: Copy UPI ID to clipboard and alert the user
-      Clipboard.setData(ClipboardData(text: widget.upiId));
+    
+    // Copy to clipboard immediately as fallback
+    await Clipboard.setData(ClipboardData(text: widget.upiId));
+    if (mounted) {
       setState(() => _copied = true);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Could not open UPI app. UPI ID '${widget.upiId}' copied to clipboard instead!"),
+          content: Text("UPI ID '${widget.upiId}' copied to clipboard! Opening UPI apps..."),
           backgroundColor: AppColors.primary,
+          duration: const Duration(seconds: 5),
         ),
       );
+    }
+
+    try {
+      // Attempt to launch the UPI app directly
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } catch (e) {
+      debugPrint("Could not launch UPI URL: $e");
     }
   }
 
